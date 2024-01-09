@@ -1,0 +1,26 @@
+# Virtual environment files
+venv/
+__pycache__/
+
+# IDE files
+.idea/
+.vscode/
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Logs and other generated files
+logs/
+*.log
+*.txt
+
+# Environment configuration files
+.env
+.env.*
+
+# Generated images
+*.png
+*.jpg
+*.jpeg
