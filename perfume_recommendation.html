@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perfume Recommendation</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 20px;
+            background-color: #f8f8f8; /* Muted background color */
+        }
+        header {
+            background-color: #ffac33; /* Updated header color */
+            padding: 10px 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        form {
+            text-align: center;
+        }
+        input[type="file"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #ffac33; /* Matching button color */
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #e68a00;
+        }
+        .recommendations {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .recommendation-item {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+            transition: transform 0.5s ease; /* Slow transition effect */
+            width: 200px;
+            opacity: 0; /* Initially hide product tiles */
+            transform: translateY(20px); /* Slide up animation */
+        }
+        .recommendation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Enhanced shadow on hover */
+            transition: transform 0.5s ease, box-shadow 0.5s ease; /* Added box-shadow transition */
+        }
+        .recommendation-item:hover img {
+            transform: scale(1.05); /* Zoom effect on image */
+            transition: transform 0.3s ease; /* Added image zoom transition */
+        }
+        .recommendation-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease; /* Initial image transition */
+        }
+        .progress-bar {
+            width: 50%;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            background-color: #ffac33; /* Matching progress bar color */
+            height: 20px;
+            width: 0;
+            transition: width 15s linear;
+        }
+        .typing-animation {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            border-right: 2px solid #000;
+            animation: typing 3s steps(20) forwards, blink-caret 0.75s step-end infinite;
+        }
+        .text-bubble {
+            display: inline-block;
+            background-color: #ffac33;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        @keyframes blink-caret {
+            from,
+            to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #000;
+            }
+        }
+        .made-by {
+            text-align: center;
+            margin-top: 50px;
+            opacity: 0;
+            animation: fade-in-out 1s 3s infinite;
+        }
+        @keyframes fade-in-out {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><span class="typing-animation">Find Your Recommended Products</span></h1>
+    </header>
+
+    <form action="/" method="post" enctype="multipart/form-data" onsubmit="return handleFileInput()">
+        {% if show_upload %}
+        <input type="file" name="image_file">
+        <br>
+        <input type="submit" value="Upload and Recommend">
+        {% else %}
+        <!-- Display a text bubble for the "No file chosen" message -->
+        <div class="text-bubble" id="no-file-warning">No file chosen!</div>
+        {% endif %}
+    </form>
+
+    <div class="recommendations">
+        {% for index in recommended_ids %}
+        <div class="recommendation-item">
+            <p>Product ID: {{ product_images.loc[index]['Product ID'] }}</p>
+            <img src="{{ product_images.loc[index]['image_link'] }}" alt="Product Image">
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-bar-fill"></div>
+    </div>
+
+    <div class="made-by">Made by Saroash</div>
+
+    <script>
+        // Animate product tiles when visible
+        const recommendationItems = document.querySelectorAll('.recommendation-item');
+        recommendationItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, (index + 1) * 200); // Delay each product tile animation
+        });
+
+        // Randomly fill and empty progress bar for aesthetic effect
+        const progressBarFill = document.querySelector('.progress-bar-fill');
+        const randomTime = Math.floor(Math.random() * 1000) + 500; // Random duration between 5s to 15s
+        progressBarFill.style.width = '100%';
+        setTimeout(() => {
+            progressBarFill.style.width = '50%';
+        }, randomTime);
+
+        // Function to handle the display of the text bubble
+        function handleFileInput() {
+            const noFileWarning = document.getElementById('no-file-warning');
+            const fileInput = document.querySelector('input[type="file"]');
+
+            if (fileInput.files.length === 0) {
+                // Display the text bubble
+                noFileWarning.style.display = 'block';
+
+                // Clear the text bubble after a delay (3 seconds in this case)
+                setTimeout(function () {
+                    noFileWarning.style.display = 'none';
+                }, 3000);
+
+                // Prevent form submission
+                return false;
+            }
+
+            return true; // Allow form submission if a file is chosen
+        }
+    </script>
+</body>
+</html>
