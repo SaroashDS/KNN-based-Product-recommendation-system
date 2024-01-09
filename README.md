@@ -21,16 +21,15 @@ To run the application locally, follow these steps:
 3. Run the Flask application: `python app.py`
 4. Be sure to follow this file structure for it to run:
 ****************************************************************
-C:\Users\PC\Desktop\Product recommendation Imagae classificaion\
-│   app.py
-│   Data ID - Sheet1.csv
-│   knn_model.pkl
-│   knn_model_4.pkl
-│   templates
-│           error.html
-│           perfume_recommendation.html
-│           result.html
-│           upload_image.html
+├── app.py
+├── Data ID - Sheet1.csv
+├── knn_model.pkl
+├── knn_model_4.pkl
+└── templates
+├── error.html
+├── perfume_recommendation.html
+├── result.html
+└── upload_image.html
 
 ****************************************************************
 
