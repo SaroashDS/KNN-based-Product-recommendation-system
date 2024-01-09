@@ -1,7 +1,7 @@
 # KNN Based Product Recommendation System
 
 ## Overview
-This project implements a perfume recommendation system based on image classification using a K-Nearest Neighbors (KNN) model trained on a dataset of perfume images. Users can upload an image of a personal care/ clothing item, and the system suggests similar products from the dataset.
+This project implements a product recommendation system based on image classification using a K-Nearest Neighbors (KNN) model trained on a dataset of perfume images. Users can upload an image of a personal care/ clothing item, and the system suggests similar products from the dataset.
 
 ## Problem Statement
 Shopping for products online can be overwhelming due to the vast variety available. Users often find it challenging to identify similar products to their preferred choices. This project aims to simplify the process by leveraging machine learning to recommend similar products based on uploaded images.
@@ -14,9 +14,12 @@ The solution employs a KNN algorithm trained on features extracted from perfume 
 - **KNN Model:** Implements a KNN model to find similar perfumes based on extracted features.
 - **Web Interface:** Provides a web-based interface for users to upload perfume images and receive recommendations.
 
+## Technologies utilized
+[![](https://skillicons.dev/icons?i=py,sklearn,html,css,flask)](https://skillicons.dev)
+
 ## Usage
 To run the application locally, follow these steps:
-1. Clone the repository: `git clone https://github.com/your-username/perfume-recommendation.git`
+1. Clone the repository: `git clone https://github.com/SaroashDS/KNN-based-Product-recommendation-system`
 2. Install necessary dependencies: Checkout the app.py file in a python editor to install dependencies`
 3. Run the Flask application: `python app.py`
 4. Be sure to follow this file structure for it to run:
