@@ -29,7 +29,7 @@ Get started with our application in just a few steps:
 ![File Structure](https://github.com/SaroashDS/KNN-based-Product-recommendation-system/assets/144798692/205e4776-18ef-4cb4-a23d-3bcf743e6c4b)
 
 ## Screenshots
-![Model in Action](https://github.com/SaroashDS/KNN-based-Product-recommendation-system/assets/144798692/98574a34-ac03-4576-a79a-7f522b7dc93f)
+<img src="https://github.com/SaroashDS/KNN-based-Product-recommendation-system/assets/144798692/98574a34-ac03-4576-a79a-7f522b7dc93f" alt="Model in Action" width="300">
 
 ## Future Enhancements
 - Enhance recommendation accuracy with more sophisticated feature extraction methods.
