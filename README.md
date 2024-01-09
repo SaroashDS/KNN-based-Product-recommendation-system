@@ -1,5 +1,8 @@
 # KNN Based Product Recommendation System
 
+![](https://github.com/SaroashDS/KNN-based-Product-recommendation-system/assets/144798692/fd0dedc1-3c75-45d2-aed6-b2f0f6afc4af)
+
+
 ## Overview
 This project implements a product recommendation system based on image classification using a K-Nearest Neighbors (KNN) model trained on a dataset of perfume images. Users can upload an image of a personal care/ clothing item, and the system suggests similar products from the dataset.
 
