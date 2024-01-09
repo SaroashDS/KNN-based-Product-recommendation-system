@@ -20,7 +20,7 @@ To run the application locally, follow these steps:
 2. Install necessary dependencies: Checkout the app.py file in a python editor to install dependencies`
 3. Run the Flask application: `python app.py`
 4. Be sure to follow this file structure for it to run:
-![The File path to be followed](https://github.com/SaroashDS/KNN-based-Product-recommendation-system/assets/144798692/205e4776-18ef-4cb4-a23d-3bcf743e6c4b)
+![](https://github.com/SaroashDS/KNN-based-Product-recommendation-system/assets/144798692/205e4776-18ef-4cb4-a23d-3bcf743e6c4b)
 
 ## Screenshots
 ![Working of the model](https://github.com/SaroashDS/KNN-based-Product-recommendation-system/assets/144798692/98574a34-ac03-4576-a79a-7f522b7dc93f)
